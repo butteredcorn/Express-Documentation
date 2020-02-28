@@ -14,6 +14,8 @@ module.exports = function (database) {
         try {
             let result = await memes.getMemes()
             //console.log(result)
+
+            //ejs syntax to render values/variables
             response.render('memes', {
                 title: 'Memes, Memes, Memes!',
                 listOfMemes: result 
