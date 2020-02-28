@@ -1,0 +1,40 @@
+function getMemes(){
+    return new Promise ((resolve, reject) => {
+        const request = require('request')
+        const url = 'https://api.imgflip.com/get_memes'
+        //body object gets filled with API call\
+            request(url, (error, response, body) => {
+                if (!error && response.statusCode == 200) {
+                    let memes = (JSON.parse(body)).data.memes
+                    let counter = 0;
+                    let cache = [];
+        
+                    memes.forEach((meme) => {
+                        if (counter < 10) {
+                            // { id: '181913649',
+                            //   name: 'Drake Hotline Bling',
+                            //   url: 'https://i.imgflip.com/30b1gx.jpg',
+                            //   width: 1200,
+                            //   height: 1200,
+                            //   box_count: 2 }
+                            cache.push(meme)
+                            counter++;
+                        }
+                    })
+                    
+                    if (counter >= 10) {
+                        //console.log(cache)
+                        console.log("Done.")
+                        resolve(cache)
+                    }
+                }
+            }) 
+        
+        })
+}
+
+//getMemes().then((stuff) => console.log(stuff))
+
+module.exports = {
+    getMemes
+}
