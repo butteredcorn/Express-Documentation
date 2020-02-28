@@ -6,6 +6,9 @@ function getMemes(){
             request(url, (error, response, body) => {
                 if (!error && response.statusCode == 200) {
                     let memes = (JSON.parse(body)).data.memes
+                    
+                    memes = shuffleArray(memes); //shuffle the memes.
+                    
                     let counter = 0;
                     let cache = [];
         
@@ -31,6 +34,20 @@ function getMemes(){
             }) 
         
         })
+}
+
+/**
+ * Randomize array element order in-place.
+ * Using Durstenfeld shuffle algorithm.
+ */
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
 }
 
 //getMemes().then((stuff) => console.log(stuff))
