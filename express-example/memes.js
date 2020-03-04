@@ -5,17 +5,14 @@ function getMemes(){
         //body object gets filled with API call\
             request(url, (error, response, body) => {
                 if (!error && response.statusCode == 200) {
-
-                    console.log(body)
                     let memes = (JSON.parse(body)).data.memes
-                    
-                    //memes = shuffleArray(memes); //shuffle the memes.
+                    memes = shuffleArray(memes); //shuffle the memes.
                     
                     let counter = 0;
                     let cache = [];
         
                     memes.forEach((meme) => {
-                        //if (counter < 10) {
+                        if (counter < 10) {
                             // { id: '181913649',
                             //   name: 'Drake Hotline Bling',
                             //   url: 'https://i.imgflip.com/30b1gx.jpg',
@@ -23,14 +20,14 @@ function getMemes(){
                             //   height: 1200,
                             //   box_count: 2 }
                             cache.push(meme)
-                            //counter++;
-                        //}
+                            counter++;
+                        }
                     })
                     console.log(cache)
                     if (counter >= 10) {
                         //console.log(cache)
-                        console.log("Done.")
                         resolve(cache)
+                        console.log("Done.")
                     }
                 }
             }) 
@@ -54,7 +51,7 @@ function shuffleArray(array) {
 
 //getMemes().then((stuff) => console.log(stuff))
 
-getMemes()
+//getMemes()
 
 module.exports = {
     getMemes

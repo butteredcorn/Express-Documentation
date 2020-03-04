@@ -19,12 +19,22 @@ module.exports = function (database) {
             response.render('memes', {
                 title: 'Memes, Memes, Memes!',
                 listOfMemes: result 
-            }) //got memes
+            }) //got memes()
 
         } catch (error) {
             console.log(error)
         }
         
+    })
+
+    app.get(('/memes'), async (request, response) => {
+        let result = await memes.getMemes()
+        console.log(result)
+        //ejs syntax to render values/variables
+        response.render('memes', {
+            title: 'Memes, Memes, Memes!',
+            listOfMemes: result 
+        }) //got memes()
     })
 
 
