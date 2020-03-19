@@ -133,7 +133,7 @@ Keep in mind that naming a file index.html has a special property whereby typing
 
 What a minute! Nothing has changed?!
 
-It's time to discuss the importance of routing.
+It is now time to discuss the importance of routing.
 
 #### Hosting Your Apps and the Importance of Routing 
 

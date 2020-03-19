@@ -298,8 +298,6 @@ So far our app.js file should look something like this:
     module.exports = function (database) {
         const express = require('express')
         const app = express()
-
-        app.set('view engine', 'ejs')
         
         app.get(('/'), (request, response) => {
             response.send('<h1>Hello World!</h1>')
@@ -324,7 +322,7 @@ Now, let's make an endpoint called /memes. Like before, we will need to use the 
     })
 ```
 
-Interesting, this will log out:
+Interestingly, this will log out:
 
 ```javascript
     Promise { <pending> }
@@ -342,138 +340,35 @@ Refactoring the code, we get this:
     })
 ```
 
+Now, let's see what we get...
+
+```javascript
+[ { id: '28034788',
+    name: 'Marvel Civil War 1',
+    url: 'https://i.imgflip.com/govs4.jpg',
+    width: 423,
+    height: 734,
+    box_count: 2 },
+  { id: '27813981',
+    name: 'Hide the Pain Harold',
+    url: 'https://i.imgflip.com/gk5el.jpg',
+    width: 480,
+    height: 601,
+    box_count: 2 },
+  { id: '89655',
+    name: 'Uncle Sam',
+    url: 'https://i.imgflip.com/1x6f.jpg',
+    width: 620,
+    height: 833,
+    box_count: 2 },
+
+    ...,
+    
+]
+```
+
 Much better.
-
-#### Step 7: Rendering the Result to the /memes Endpoint
-
-Now that we have our results in our express app, we just need to render it so the client can see it. To do this, we can simply use embedded JavaScript (EJS) like so:
-
-```javascript
-    let result = await memes.getMemes()
-
-    response.render('memes', {
-        title: 'Memes, Memes, Memes!',
-        listOfMemes: result 
-    })
-```
-
-Now that we have our application wrapped in an app.get() we can create a memes.ejs file to push render to. For now, let's just create a basic ejs file called memes.ejs in our views folder. This file doesn't have to contain anything other than HTML5's boiler plate code for now.
-
-After that is done, we can call response.render() which takes the name of the ejs file (in thise case memes.ejs) and an object where we map our result to a variable that is passed to our ejs file for handling.
-
-At this point, our app.js file should look like this:
-
-```javascript
-    module.exports = function (database) {
-        const express = require('express')
-        const memes = require('./memes')
-        const app = express()
-
-        app.set('view engine', 'ejs')
-        
-        app.get(('/'), (request, response) => {
-            response.send('<h1>Hello World!</h1>')
-        })
-
-        app.get(('/memes'), async (request, response) => {
-            let result = await memes.getMemes()
-
-                response.render('memes', {
-                title: 'Memes, Memes, Memes!',
-                listOfMemes: result 
-            })
-        })
-        
-        return app;
-    }(null);
-```
-
-#### Step 8: Handling the Memes in the EJS File
-
-Once we have access to the result in the form of a variable called 'listOfMemes', we can simply loop through our array of meme objects and create HTML tags to be displayed. In this case, I have chosen to wrap the meme objects in a list tag.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <h1>Hello World!</h1>
-    <ul>
-        <% listOfMemes.forEach(function(item, index){ %>
-            <li> <img src="<%=item.url%>" alt="some meme" </li>
-        <% }); %>
-    </ul>
-
-</body>
-</html>
-```
-
-And at last, we can take a look at our finished product by starting up our node express server and then using our browser to access our localhost, in my case, this is http://localhost:3000/memes.
-
-The page should look something like this:
-![memes webpage](./images/memes-page.png)
-
-It could certainly use a bit of styling, but we'll leave that for another time.
-
-#### Step 9: Error Handling - The Optional but Not Really Part
-
-So our memes endpoint/webpage works, but no code is complete without error handling. We can add some error handling by simply wrapping our function call to memes.getMemes() in a try-catch block like so:
-
-```javascript
-    app.get(('/memes'), async (request, response) => {
-        try {
-            let result = await memes.getMemes()
-
-            response.render('memes', {
-                title: 'Memes, Memes, Memes!',
-                listOfMemes: result 
-            })
-
-        } catch (error) {
-            //handle error here
-            console.log(error)
-        }
-        
-    })
-```
-and finally, our app.js file should look like this:
-
-```javascript
-module.exports = function (database) {
-    const express = require('express')
-    const memes = require('./memes')
-    const app = express()
-
-    app.set('view engine', 'ejs')
-
-    app.get(('/memes'), async (request, response) => {
-        try {
-            let result = await memes.getMemes()
-
-            response.render('memes', {
-                title: 'Memes, Memes, Memes!',
-                listOfMemes: result 
-            })
-
-        } catch (error) {
-            console.log(error)
-        }
-        
-    })
-    
-    return app;
-}(null);
-```
 
 #### Summary
 
-At this point, we have created a basic express server, created an application that is asynchronous, handled that asynchronicity within our app.get() function inside our express app, and successfully rendered the result to the end user.
-
-Congratulations!!! You are now one step closer to becoming a web developer.
-
-In the next section, we will be talking about integrating a method to handle our errors centrally.
+At this point, we have created a basic express server, created an application that is asynchronous, and handled that asynchronicity within our app.get() function inside our express app. So far, however, the only thing that is happening when someone accesses our app.get('/memes') is that we get some meme objects logged out to our console. Let's render this data to the front end, so we can finally see the fruits of our labours!

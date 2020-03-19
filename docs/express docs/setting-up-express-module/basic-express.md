@@ -163,6 +163,21 @@ app.get('/', (req, res) => {
 })
 ```
 
+And finally, combining everything together, it should look like this:
+
+```javascript
+const express = require('express')
+const app = express()
+
+app.get('/', (req, res) => {
+    res.send("Hello World!")
+})
+
+app.listen(3000, () => {
+    console.log(`Express app hosted on port 3000!`)
+})
+```
+
 Let's try re-running our server and accessing our local host again. Your browser should now render the following:
 
 ![hello world](./images/hello-world.png)
