@@ -3,7 +3,7 @@ The purpose of this documentation is to assist someone new to coding with settin
 
 #### What is Express.js?
 
-[Express.js] is a fast, minimalist web framework for Node.js. It is used for hosting everything from web pages, to RESTful APIs, to dedicated JSON web token authentication servers. With over 43,000 GitHub stars, Express.js is the most popular Node framework. 
+[Express.js](https://expressjs.com/) is a fast, minimalist web framework for Node.js. It is used for hosting everything from web pages, to RESTful APIs, to dedicated JSON web token authentication servers. With over 43,000 GitHub stars, Express.js is the most popular Node framework. 
 
 #### Is This Guide Right for You?
 If the terms RESTful APIs and dedicated JSON web token authentication servers sounds half familiar and half foreign, then this guide is right for you. We assume that you have at least some beginner level programming knowledge, but not much beyond that. This guide is meant to help with someone who has not used Express.js before and just wants to make a modular bare basic skeleton to work with.
@@ -42,7 +42,3 @@ lorem ipsum
 lorem ipsum
 
 
-
-
-
-[Express.js]: https://expressjs.com/
