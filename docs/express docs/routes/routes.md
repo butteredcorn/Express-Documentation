@@ -8,7 +8,7 @@ This example application will have a routes folder with two files: **index.js** 
 
 ### Inside the routes folder
 
-![routes_folder](images/routes_folder.png?raw=true "Routes folder")
+![routes_folder](./images/routes_folder.png)
 
 ## Code for the routes files
 

@@ -299,9 +299,8 @@ So far our app.js file should look something like this:
         const express = require('express')
         const app = express()
         
-        app.get(('/'), (request, response) => {
-            response.send('<h1>Hello World!</h1>')
-        })
+        //app.get('/', (req, res) => res.send('Hello World!'))
+        app.use(express.static('public'))
         
         return app;
     }(null);
@@ -316,7 +315,7 @@ First, let's start off by requiring our newly created memes file with:
 Now, let's make an endpoint called /memes. Like before, we will need to use the express app.get() function, and then pass in our endpoint name. We can simply call our function in memes.js and assign it to a variable and just log it out to the console for now like so:
 
 ```javascript
-    app.get(('/memes'), (request, response) => {
+    app.get(('/memes'), (req, res) => {
         let result = memes.getMemes()
         console.log(result)
     })
@@ -367,7 +366,51 @@ Now, let's see what we get...
 ]
 ```
 
-Much better.
+Much better, however, we are still missing one last thing...
+
+#### Step 7: Error Handling - The Optional but Not Really Part
+
+So our memes endpoint works, but no code is complete without error handling. We can add some error handling by simply wrapping our function call to memes.getMemes() in a try-catch block like so:
+
+```javascript
+app.get(('/memes'), async (request, response) => {
+    try {
+        let result = await memes.getMemes()
+        console.log(result)
+
+    } catch (error) {
+        //handle error here
+        console.log(error)
+    }
+    
+})
+```
+And finally, our app.js file should look like this:
+
+```javascript
+app.js
+------
+
+module.exports = function (database) {
+    const express = require('express')
+    const memes = require('./memes')
+    const app = express()
+
+    //app.get('/', (req, res) => res.send('Hello World!'))
+    app.use(express.static('public'))
+
+    app.get(('/memes'), async (request, response) => {
+        try {
+            let result = await memes.getMemes()
+            console.log(result)
+        } catch (error) {
+            console.log(error)
+        }
+    })
+    
+    return app;
+}(null);
+```
 
 #### Summary
 
