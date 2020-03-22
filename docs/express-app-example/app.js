@@ -2,6 +2,11 @@ module.exports = function (database) {
     const express = require('express')
     const memes = require('./memes')
     const app = express()
+    const aboutRouter = require('./routes/about')
+
+
+    app.use(express.static('public')) 
+    app.use(aboutRouter)
 
     //all ejs files are hosted in root/views
     app.set('view engine', 'ejs')

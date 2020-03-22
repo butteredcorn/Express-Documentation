@@ -1,160 +1,204 @@
-# Using routers for modularity and passport for protection
+# Using Express Routers for Better Modularity
 
-## Creating a routes folder
+In this tutorial we will be going over how to use Express router property to break routes down into their own files. Again, the purpose of increasing modularity is to make our code easier to read, debug, work with, and test. It is essential that we modularize our code.
 
-Within your project's top level directory, create a new folder called **routes**. This folder will hold the various files intended to handle all the different routes and endpoints that are needed for your application. Having this folder, and making use of the files inside of it, plays a significant role in keeping your project's endpoints organized.
+Here, we break down this process into four short steps:
+<ul>
+<li>Create a Routes Folder</li>
+<li>Calling the Express Router Function in our Route Files</li>
+<li>Using router.get() Instead of app.get()</li>
+<li>Requiring Our Route Files and Using Them in app.js.</li>
+</ul>
 
-This example application will have a routes folder with two files: **index.js** and **about.js**. The index file will handle the route to the home page, while the about file will handle the route to the about page.
+## Create a Routes Folder
 
-### Inside the routes folder
+Let's create a new folder to house all of our routes. We will do this directly within our project's root directory, and for now, let's just call it **routes**. This folder will hold the various files that will handle all the different routes and endpoints for our application. By having all of our routes in one place, but not in one file, we can keep our Express server organized.
 
-![routes_folder](./images/routes_folder.png)
+For this example, lets one file in our routes folder called **about.js** like so:
 
-## Code for the routes files
+![routes_folder](./images/route-about.png)
 
-In this example we will use the source code from the previous module and modularize the application so that the routes are all separated into multiple files within the routes folder.
+We will get this about.js file to handle the end points to all the urls belonging to the /about route.
 
-### The source code from the previous module
+In this case, this about.js file will direct all requests for urls including '/about/' to an about.html page in the 'public' folder which is a sub-folder directly under the root directory like this:
 
+![public folder](./images/public-folder.png)
+
+We will still leave our app.js and server.js file directly in the root directory. In other words, our express server is organized like this:
+
+![root folder](./images/root-dir.png)
+
+And the code looks like this right now:
+
+root directory:
 ```javascript
-const express = require('express')
-const app = express()
+app.js
+------
+
+module.exports = () {
+    const express = require('express')
+    const app = express()
+
+    app.use(express.static('public')) //hosting a file called index.html
+
+    return app
+}()
+
+
+server.js
+---------
+
 const port = 3000
-
-app.get('/', (req, res) => res.send('Hello World!'))
-
-app.use(express.static('public'))
-
-app.get('/about', (req, res) => {res.send('About Us');});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 ```
 
-## Modularizing the homepage route
 
-First, we will work on the index route, or homepage. Like any express app, the first line of code would be to require express. You can do this by writing the line `const express = require('express')`. Here is when we being to take advantage of using routes. In the following line we will set a variable equal to the `express.Router()` function. Doing this will grant you all the functionalities of the router function tied to one variable. By convention, we will call this variable **router**. The final line for this introductory code block will be to require path. This line gives pathing functionalities throughout all directories. Doing this provides the user with an easier time referencing files, which we will be a lot since this module focuses on having various separate files.
-
-### Your index.js file inside of your routes folder should look something like this
-
+routes sub-directory:
 ```javascript
+about.js
+--------
 const express = require('express')
-const router = express.Router();
-const path = require('path');
 ```
 
-The following code that we will write will make use of our router variable that we have previously defined. Similar to the **app** variable covered in the previous module, we will again apply the get method; in this case we will use **router.get()** instead of **app.get()**. Although named a different variable, the overarching goal remains the same and will be written in a similar manner.
+## Calling the Express Router Function in our Route Files
 
-The code ```router.get()``` takes in a path and a callback function. The path will be set to **/** for this function, as it will hold the home page of our application. Next, the function will take in a callback function. The callback function will provide the requested path, so that the router function can bind the **/** route to the pre-baked html page that was created in the previous module.
-
-The callback function uses ```res.sendFile(path.resolve('public/index.html')```. The method **res.sendFile()** sends the direct path to a file. Typically there would be an issue with sending files in different directories to our ```res.sendFile()```. This is where our path variable comes into play. We can use the method **path.resolve()** to allow the direct path to the file to pass our **res.sendFile()**. For this scenario we will pass in the path to our pre-baked html page: **public/index.html**.
-
-### Your code should look something like this
+Let's start in our about.js file. Like any express app, the first line of code would be to require express. After that, we will need to get access to the express.router function. Like the express application object, we can get access to the router by simply binding it to a global variable. Let's do that now by binding it to a variable called router like so:
 
 ```javascript
+about.js
+--------
+
+const express = require('express')
+const router = express.Router();
+
+```
+
+>Note: the name of the global variable to bind express.Router() is **router** by convention.
+
+At this time, let's also require the Node.js built-in '[path](https://nodejs.org/api/path.html)' module. If you aren't already familiar, this module will let us reference the relative and absolute paths of our files and directories more easily. Again, all we need to do is bind it to a variable like so:
+
+```javascript
+about.js
+--------
+
+const express = require('express')
+const router = express.Router();
+const path = require('path')
+```
+
+## Using router.get() Instead of app.get()
+
+Essentially you can think of router.get() as an app.get() with the additional functionality to fork out end points. We refer to a fork of end points as a route. If that doesn't make sense right now, that's okay, as it will make more sense after we create a route.
+
+To use router.get(), all we need to do is call it just like app.get() like so:
+
+```javascript
+router.get('', (req, res) => {
+    
+});
+```
+
+Again, we can see that router.get() takes two arguments, the first of which is a string that refers to a path, and the second a callback function that takes a request, a response, and optionally, a 'next' argument. We will leave that one out for now.
+
+Let's pass in ```'/about'``` for the path, and then in the body of the anonymous function, call ```res.sendFile()``` and pass in our about.html page like so:
+
+```javascript
+router.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/about.html'))
+});
+```
+
+As you can imagine, this property will send a whole file to the end user.
+
+>Note: res.sendFile() requires an absolute path or a reference to the root directory. This is we use the built-in path module as shown.
+
+At this point, our about.js file should look like this:
+
+```javascript
+about.js
+--------
+
 const express = require('express');
 const router = express.Router();
 const path = require('path');
 
 
-router.get('/', function(req, res, next) {
-    res.sendFile(path.resolve('public/index.html'));
-  });
+router.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/about.html'))
+});
 ```
 
-To finish off this file, we need to make this file available to be reached by other files. The code ```module.exports = router;``` will accomplish the task at hand.
-
-### The final outcome for this file should look something like this
+To make this file available to our main app.js file, we will need to export the Express router. We accomplish this by simply using module.exports and exporting the router directly like so:
 
 ```javascript
+about.js
+--------
+
 const express = require('express');
 const router = express.Router();
 const path = require('path');
 
 
-router.get('/', function(req, res, next) {
-    res.sendFile(path.resolve('public/index.html'));
-  });
+router.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/about.html'))
+});
 
-module.exports = router;
+module.exports = router
 ```
 
-The next step would be to require this freshly developed file inside of our **server.js** file. To do this, we must alter the line where we work with the homepage inside of our **server.js** file.
+Now, we are ready to move back to our app.js file and require this about.js file.
 
-The first phase of altering our **server.js** file would be to replace the lines ```app.get('/', (req, res) => res.send('Hello World!'))``` and ```app.use(express.static('public'))```. We will be replacing these lines with other lines to refer to our **index.js** file. Firstly, we need to require our **index.js** file inside of our **server.js** file. The line ```const indexRouter = require('./routes/index');``` accomplishes the job. The variable can be named to whatever your hearts desire. For this example we will call it indexRouter.
+## Requiring Our Route Files and Using Them in app.js
 
-### Your server.js file should look similar to this
+In order to use our route files, we need to require them in our app.js. We do that by simply requiring them like normal as follows:
 
 ```javascript
-const express = require('express')
-const app = express()
-const port = 3000
-const indexRouter = require('./routes/index');
+app.js
+------
 
-app.get('/about', (req, res) => {res.send('About Us');});
+module.exports = () {
+    const express = require('express')
+    const app = express()
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+    const aboutRouter = require('./routes/about')
+
+    app.use(express.static('public')) //hosting a file called index.html
+
+
+    return app
+}()
 ```
 
-This current code only has the function to be able to use the **index.js** file. Next we need to apply the work we did inside of **index.js** to our server file. To do this we simply need to use the method **app.get()** and pass in our variable, indexRouter, where we required our index file.
+>Note: By convention we name the variables that require the routes by the route name and then router. In this case, we are requiring the about router, and name it accordingly.
 
-### Your server.js file with functional route to the home page should look similar to this
+Now that the route is required, all we need to do is to tell Express to use the route. Similar to the express.static function, we just call ```app.use()``` and pass in ```aboutRouter``` like so:
 
 ```javascript
-const express = require('express')
-const app = express()
-const port = 3000
-const indexRouter = require('./routes/index');
+app.js
+------
 
-app.use(indexRouter)
+module.exports = () {
+    const express = require('express')
+    const app = express()
 
-app.get('/about', (req, res) => {res.send('About Us');});
+    const aboutRouter = require('./routes/about')
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+    app.use(express.static('public')) //hosting a file called index.html
+
+    app.use(aboutRouter)
+
+
+    return app
+}()
 ```
 
-## Modularizing the about route
+And that's it! Let's test our hardwork by running the server and accessing 'localhost:3000/about'.
 
-Modularizing the about route will be similar to modularizing the index page. The first step would be create a new file inside of the routes folder. Inside of the routes folder, create a new file called **about.js**. This file can be named anything of your choice. In this case we will call it *about* since it handles the about route.
+![about.html](./images/about-html.png)
 
-Like the **index.js** file, our first two lines of our about file should be ```const express = require('express');``` and ```const router = express.Router();```. Next we will build the router function within the **about.js** file. It will look relatively similar to the function that has been previously built. The code to create the about route should look like ```router.get('/about', function(req, res, next) {
-res.send('about us');
-  });```. Different from the index router, we will set this path to be **/about**. Lastly we need to export this file so it can be used within the server file.
+Voila!
 
-### The about file should look similar to this
+## Summary
 
-```javascript
-const express = require('express');
-const router = express.Router();
-
-router.get('/about', function(req, res, next) {
-    res.send('about us');
-  });
-
-module.exports = router;
-```
-
-The next step would be to jump back to the **server.js** file and manipulate the code that works with the about route. Back inside **server.js**  we need to require our new about file. We can do this by using the line ```const aboutRouter = require('./routes/about');```. Like our index router, we will make use of the method **app.get()** and pass in the variable where we required the about file.
-
-### The server.js file should make use of all the newly created routes and look similar to this
-
-```javascript
-const express = require('express')
-const app = express()
-const port = 3000
-const indexRouter = require('./routes/index');
-const aboutRouter = require('./routes/about');
-
-app.use(indexRouter)
-
-app.use(aboutRouter)
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
-```
-
-### The urls to see the new index and about route should look something like this respectively
-
-```txt
-http://localhost:3000
-
-http://localhost:3000/about
-```
+At this point we have created routes to even further modularize our code, and all we had to do was to write a few additional lines of code. Very little effort for the enormous benefit of writing code that is easy to read, work with, debug, and test.
