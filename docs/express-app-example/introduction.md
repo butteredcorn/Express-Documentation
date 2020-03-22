@@ -1,3 +1,8 @@
+---
+layout: default
+nav_order: 1
+---
+
 # Introduction
 The purpose of this documentation is to assist someone new to coding with setting up an express server and hosting a web application.
 

@@ -1,3 +1,8 @@
+---
+layout: default
+nav_order: 5
+---
+
 # A Primer On Embedded JavaScript
 
 [Embedded JavaScript](https://ejs.co/#install) (EJS) is a templating language that is used to embedd JavaScript into HTML. EJS files are saved in a .ejs extension format. EJS is popular because it looks familiar to web developers and provides an easy way to render data to the client side.
@@ -212,10 +217,10 @@ And Voila! Just like that, we've created the view file necessary to render our a
 The page should look something like this:
 ![memes webpage](./images/memes-page.png)
 
+## Summary
+
 It could certainly use a bit of styling, but we'll leave that for another time. For now, let's celebrate how far you've gotten!
 
 ![congratulations cat](./images/wheat-cat.jpeg)
 
 Congratulations!!! You are now one step closer to becoming a web developer.
-
-In the next section, we will be talking about [error handling](./error-handling.md).

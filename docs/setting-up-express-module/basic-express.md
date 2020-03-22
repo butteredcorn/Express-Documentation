@@ -1,3 +1,8 @@
+---
+layout: default
+nav_order: 2
+---
+
 # Creating Your First Express Server
 
 These instructions will go over how to setup a the most basic web server using Express.js and then introduce additional components to make your server more useful and scalable.
