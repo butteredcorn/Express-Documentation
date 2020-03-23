@@ -62,7 +62,7 @@ some other code here
 
 ## Additional Notes and Warnings
 
-All notes are separated into their own grey blocks of text like so:
+All notes are separated into their own indented blocks of text like so:
 
 >note: Our notes are noted like this.
 

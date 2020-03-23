@@ -28,13 +28,13 @@ $ npm install ejs
 
 #### Step 2: Instruct Express.js to Use EJS as a View Engine
 
-To serve EJS content through Express, we need to tell Express to use EJS. To do this, we actually need to tell Express to use EJS at the application level. We do this with the express application property .set() like so:
+To serve EJS content through Express, we need to tell Express to use EJS. To do this, we actually need to tell Express to use EJS at the application level. We do this with the express application property ```.set()``` like so:
 
 ```javascript
     app.set('view engine', 'ejs')
 ```
 
-Think of the .set() method as a way to access and modify the configuration of your express application.
+Think of the ```.set()``` method as a way to access and modify the configuration of your express application.
 
 With regards to where we place this code, we should put this after we've decleared our application, and before any end points like so:
 
@@ -70,13 +70,13 @@ Now, we are ready to move on to rendering data.
 
 ## Rendering Data to the EJS File
 
-To recap, so far we have created a memes.js file that gets an array of meme objects, and we can get that array of meme objects through a .get('/memes') end point. Now, we are finally ready to take those meme objects and render them to HTML so that we can serve to our end users.
+To recap, so far we have created a memes.js file that gets an array of meme objects, and we can get that array of meme objects through a ```.get('/memes')``` end point. Now, we are finally ready to take those meme objects and render them to HTML so that we can serve to our end users.
 
 #### Step 1: Calling response.render() to Render a View
 
-The Express response object has a method called .render() that is used to render a view. For this tutorial, all you need to know is that an .ejs file is a kind of view file (there are many others).
+The Express response object has a method called ```.render()``` that is used to render a view. For this tutorial, all you need to know is that an .ejs file is a kind of view file (there are many others).
 
-Returning to our app.js file, let's call res.render() like so:
+Returning to our app.js file, let's call ```res.render()``` like so:
 
 ```javascript
 app.js
@@ -95,7 +95,7 @@ app.get(('/memes'), async (req, res) => {
 
 #### Step 2: Pass in Data as Key Value Pairs 
 
-If you take a look at your code editor, you will notice that .render() will take two arguments, the first is for a 'view' which should be a string, and the second, an object. The somewhat mysterious 'view' argument is simply the name of the .ejs file in your views folder. We don't have one yet, but let's pass in 'memes' for now like so:
+If you take a look at your code editor, you will notice that ```.render()``` will take two arguments, the first is for a 'view' which should be a string, and the second, an object. The somewhat mysterious 'view' argument is simply the name of the .ejs file in your views folder. We don't have one yet, but let's pass in 'memes' for now like so:
 
 ```javascript
 app.js
@@ -112,7 +112,7 @@ app.get(('/memes'), async (req, res) => {
     
 ```
 
-The second argument, the object, is something we can use to pass in key value pairs. The key will be a variable name, and the value will be any value we want to pass to the view file. Let's pass in a title along with our result from calling .getMemes() like so:
+The second argument, the object, is something we can use to pass in key value pairs. The key will be a variable name, and the value will be any value we want to pass to the view file. Let's pass in a title along with our result from calling ```.getMemes()``` like so:
 
 ```javascript
 app.js
@@ -162,7 +162,7 @@ That looks pretty good for now, let's move on to creating our EJS view file.
 
 ## Creating an EJS File and Handling Data
 
-So we've told Express that .render() should be expecting a 'memes' view file, but we haven't created one yet, so let's do that now. 
+So we've told Express that ```.render()``` should be expecting a 'memes' view file, but we haven't created one yet, so let's do that now. 
 
 #### Step 1: Create an EJS Views File
 
@@ -210,7 +210,7 @@ We created two variables and passed them to the .render() method via an anonymou
 </html>
 ```
 
-Essentially, for any JavaScript lines, we can type them as usual and simply enclose them with <% %> on each side. To use a variable that we passed in, we simply need to add an equal sign to the right of the leading <%.
+Essentially, for any JavaScript lines, we can type them as usual and simply enclose them with ```<% %>``` on each side. To use a variable that we passed in, we simply need to add an equal sign to the right of the leading ```<%```.
 
 And Voila! Just like that, we've created the view file necessary to render our array of meme objects. Let's take a look at our hardwork by starting up our node express server and typing in the url of end point, and in this case, http://localhost:3000/memes.
 

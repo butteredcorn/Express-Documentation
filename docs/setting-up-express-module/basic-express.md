@@ -15,7 +15,10 @@ Express.js is a framework for Node.js. If you do not have Node.js installed, ple
 
 Once you have Node.js installed, create a new file directory for your server/project. You can do this with your explorer (Windows) or finder (MacOS), your favorite code editory, or with your terminal. We encourage that you get used to typing in comands with your terminal, and can do so with the following commands:
 
-![Command Prompt](images/setup.png?raw=true "Command Prompt")
+```bash
+$ mkdir express-app
+$ cd express-app
+```
 
 For now, we will simply create the server directly inside this root folder, so this will be the only file we need to create right now.
 
@@ -23,7 +26,9 @@ For now, we will simply create the server directly inside this root folder, so t
 
 The next few steps will require the use of the terminal. In your terminal, type the command **npm init** and press enter like so:
 
-![npm init](images/npm_init.png?raw=true "npm init")
+```bash
+$ npm init
+```
 
 Running npm init prompts various questions regarding your project. For now, you can skip these questions by pressing enter.
 
@@ -33,7 +38,9 @@ The npm init command, creates a file called package.json which at its core, is a
 
 Now, we are ready to install our server software, Express.js. We can do this again, by typing a command into the terminal like so:
 
-![npm install express](images/npm_install_express.png?raw=true "npm init")
+```bash
+$ npm install express
+```
 
 >Note: If you are also referencing older resources, they may be instructing you to also type the --save option after typing express. As of [npm 5.0.0](https://blog.npmjs.org/post/161081169345/v500), all installations are saved as a dependency in your package.json by default.
 
