@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Home
-nav_order: 1
 ---
+
 # Welcome to a Guide on How to Setup Your First Express.js Web Server
 
 If you are new to Express.js, we recommend that you read our guide in the order provided.
