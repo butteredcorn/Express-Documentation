@@ -1,3 +1,8 @@
+---
+layout: default
+nav_order: 8
+---
+
 # Troubleshooting Guide
 
 While following this guide, you may run into one of many common problems. We hope to provide at least some guidance for you, should you run into the following problems:

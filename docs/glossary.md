@@ -1,3 +1,8 @@
+---
+layout: default
+nav_order: 9
+---
+
 # Glossary
 
 #### Application Programming Interface (API)

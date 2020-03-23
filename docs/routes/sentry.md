@@ -1,3 +1,9 @@
+---
+layout: default
+nav_order: 7
+---
+
+
 # Centralized Error Handling with Sentry.io
 
 ## Implementing sentry.io for error tracking

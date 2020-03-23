@@ -168,7 +168,7 @@ So we've told Express that ```.render()``` should be expecting a 'memes' view fi
 
 Simply create a file called memes.ejs inside your views folder that you just created in your root directory. This file doesn't have to contain anything other than HTML5's boiler plate code like so:
 
-```HTML
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,7 +180,6 @@ Simply create a file called memes.ejs inside your views folder that you just cre
 
 </body>
 </html>
-
 ```
 
 So far, there is nothing special about this file, even though it uses an .ejs extension, this is for all intents and purposes the same as a .html file.
