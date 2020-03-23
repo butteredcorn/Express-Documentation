@@ -4,7 +4,9 @@ nav_order: 1
 ---
 
 # Introduction
-The purpose of this documentation is to assist someone new to coding with setting up an express server and hosting a web application.
+The purpose of this documentation is to assist someone new to coding with not only setting up your first Express server and application, but to do so in a fashion that is easy to read, easy to work with, easy to debug and easy to test.
+
+Welcome to my introductory guide for learning how to setup a modular Express.js web server!
 
 ## What is Express.js?
 
@@ -56,9 +58,6 @@ file2
 some other code here
 
 ```
-
-
-
 
 ## Additional Notes and Warnings
 

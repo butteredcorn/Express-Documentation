@@ -60,6 +60,16 @@ Ensure that you are [passing in an absolute path or a reference to the root dire
 
 >Note: .sendFile() was added to Express.js from v4.8.0 onwards. Earlier versions will not have any references to .sendFile().
 
+#### The Dreaded Promise { <pending> }
+
+If you even come across this after you try to log out the result of an end point calling a function and you get the following:
+
+```bash
+Promise { <pending> }
+```
+
+It is because your console.log() statement is getting called before the promisifed function you are calling is getting resolved. Ensure that both the function you are calling is somehow handling its asyncronicity and that the end point itself is also handling asyncronicity. We suggest using async await for handling end points because end points should follow the principle of single responsibility. If the end point is too complex to use async await, it should be broken up into more modular code.
+
 #### Values From Variables Passed to an EJS File Fails to Render to Front End
 
 If you notice that the values for variables you are passing to your ejs files fail to show up when you try to access the HTML page in your browser, check to ensure that you are using the proper [EJS syntax](https://ejs.co/#docs), such as using the equal sign operator after the opening angle bracket and percentage sign like so:
@@ -78,6 +88,6 @@ Consider the following code:
 The variable value will be logged to the console, but nothing will be rendered to the front end.
 
 This issue can be particularly frustrating since EJS is a templating language, and you will not be notified of these types of issues.
-
+   
 
 
