@@ -26,9 +26,9 @@ Topics this guide will cover includes:
 
 We utilize the following dependencies along with Node.js v10.16.3:
 <ul>
-<li>"ejs": "^3.0.1"</li>
-<li>"express": "^4.17.1"</li>
-<li>"request": "^2.88.2"</li>
+<li>ejs: 3.0.1</li>
+<li>express: 4.17.1</li>
+<li>request: 2.88.2</li>
 </ul>
 
 ## Prerequisites
@@ -42,7 +42,7 @@ While we believe you can follow this guide without having prior knowledge workin
 
 ## Typographical Conventions
 
-In all of our code blocks, we will denote the filename the code block belongs to by stating the filename along with a line of dashes underneath it like so:
+In all of our syntactically highlighted code blocks, we will denote the filename the code block belongs to by stating the filename along with a line of dashes underneath it like so:
 
 ```javascript
 file1

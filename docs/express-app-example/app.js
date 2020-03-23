@@ -47,17 +47,6 @@ module.exports = function (database) {
         
     })
 
-
-    // router.get('/user/:id', async (req, res, next) => {
-    //     try {
-    //       const user = await getUserFromDb({ id: req.params.id })
-    //       res.json(user);
-    //     } catch (e) {
-    //       //this will eventually be handled by your error handling middleware
-    //       next(e) 
-    //     }
-    //   })
-    
     return app; //if this wasn't wrapped in a function, this is where we would use module.exports = app
 }(null);
 
