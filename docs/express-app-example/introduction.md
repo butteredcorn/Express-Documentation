@@ -35,8 +35,8 @@ We utilize the following dependencies along with Node.js v10.16.3:
 To follow along with these instructions, you will need the following:
 <ul>
 <li>Knowledge of basic programming concepts like conditional statements, loops, procedural programming, and handling asynchronous code</li>
-<li>Knowledge of working with the your command line interface ie. terminal or powershell</ul>
-
+<li>Knowledge of working with the your command line interface ie. terminal or powershell</li>
+</ul>
 
 While we believe you can follow this guide without having prior knowledge working with JavaScript and Node.js, you may need to refer to other resources to help you read through and understand some nuances with JavaScript.
 
