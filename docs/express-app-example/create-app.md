@@ -15,7 +15,7 @@ Due to the nature of this particular task, we will be discussing more concepts t
 <li>Creating a new getMemes() function</li>
 <li>Using the Request Library to request for the JSON data from imgflip</li>
 <li>Parsing Out the Data and Preparing it to be Sent Out</li>
-<li>Checking Our Work</li>
+<li>Organizing the Data</li>
 <li>Importing Your Application and Wrapping It in the Express App </li>
 <li>Error Handling - The Optional but Not Really Part</li>
 </ol>
@@ -24,16 +24,24 @@ Due to the nature of this particular task, we will be discussing more concepts t
 
 For this demo applicatiaon we will be using the request library.
 
-Simply type 'npm install request' in your command line to install the library.
+Simply install request through your terminal with the following command:
 
-After that, we can import the library into the file with the following line of code:
+```bash
+npm install request
+```
+
+After that, we can import the library into a new file called memes.js like so:
 
 ```javascript
-const request = require('request')
+memes.js
+--------
 
+const request = require('request')
 ```
 
 ## Section 2 - Creating a new getMemes() function
+
+After we have request setup, let's create a function to handle the API call like so:
 
 ```javascript
 function getMemes(){
@@ -43,7 +51,7 @@ function getMemes(){
 }
 ```
 
-Here I have chosen to use Promise syntax, but you can change the function to use callbacks or async await instead.
+>Note: We have chosen to use Promise syntax, but you can change the function to use callbacks or async await instead.
 
 Now let's define request inside our function and also the url of the API we will be calling like so:
 
@@ -80,7 +88,7 @@ Let's see what is inside this mysterious 'body' parameter by logging it to the c
 {"success":true,"data":{"memes":[{"id":"181913649","name":"Drake Hotline Bling","url":"https:\/\/i.imgflip.com\/30b1gx.jpg","width":1200,"height":1200,"box_count":2}, ...
 ```
 
-If you are following along, you'll see that the a very large block of code gets printed to the console. I have only copied the first big of this block.
+If you are following along, you'll see that the a very large block of code gets printed to the console. I have only copied the first little bit of this block.
 
 Why don't we refactor it a bit so that it is easier to read like so:
 
@@ -111,12 +119,16 @@ Essentially this API is returning an object with several properties, notably a d
 
 Now that we can see what we are getting when we call the request function, let's prepare it for our server.
 
+#### 1. Parsing the Data
+
 We know that the object has a property called data that itself is an object with the property memes (which contains our meme objects), so we can simply use dot notation twice to access it like so:
 
 ```javascript
     let memes = (JSON.parse(body)).data.memes
 ```
 Note that we need to parse the body out of the JSON object, and we can do that just by using JSON.parse().
+
+#### 2. Structure the Data in an Array
 
 Once we have our memes, we can simply loop through them and push them into a container like an array, like so:
 
@@ -159,7 +171,11 @@ Now let's log our new filled up array to the console and see what we have now.
     ...
 }
 ```
-Wow! There sure are a lot of them. For now let's just limit the memes to ten by using an if statement and then pass them to resolve like so:
+Wow! There sure are a lot of them. For now let's just limit the memes to ten.
+
+#### 3. Limit the Memes to Ten
+
+ By using an if statement we can reduce the objects to a workable amount like so:
 
 ```javascript
     let memes = (JSON.parse(body)).data.memes
@@ -181,7 +197,9 @@ Wow! There sure are a lot of them. For now let's just limit the memes to ten by 
 
 ```
 
-Putting it all together, our function should look like this:
+#### 4. Putting it Together
+
+And finally, putting it all together, our function should look like this:
 
 ```javascript
 function getMemes(){
@@ -217,11 +235,15 @@ module.exports = {
 }
 ```
 
-## Section 5: Checking Our Work
+## Section 5: Organizing the Data
 
-If you log the result out to the console now, you should see the same array filled with meme objects, except that we've limited the number of memes to ten.
+Now that we have limited the meme objects to just 10, log out the the code to see what you get. If you are paying close attention, you will notice that it is the exact same memes in the exact same order!
 
-If you are paying close attention, however, you will notice that it is the exact same memes in the exact same order! Now, this would be fine if there ten memes were the only ones that we wanted to show our end users, but that seems a little bit boring. Why don't we add a shuffling function to the code, before be put ten memes into the cache array with something like this:
+Now, this would be fine if there ten memes were the only ones that we wanted to show our end users, but that seems a little bit boring...
+
+#### 1. Introducing a Shuffle Algorithm
+
+We can keep our users interested in our application by add a shuffling function to the code. We can use the following shuffle algorithm to accomplish this:
 
 ```javascript
     function shuffleArray(array) {
@@ -235,7 +257,9 @@ If you are paying close attention, however, you will notice that it is the exact
     }
 ```
 
-All we will have to do, is include this function in the same file (or require it from another file if you would like to modularize the code), and then call it before our loop like so:
+#### 2. 'Organize' the Data by Shuffling It
+
+Ensure that you put this before we push the meme objects into the cache array like so:
 
 ```javascript
     let memes = (JSON.parse(body)).data.memes
@@ -249,6 +273,8 @@ All we will have to do, is include this function in the same file (or require it
     memes.forEach((meme) => {
         ...
 ```
+
+#### 3. Putting It Together
 
 And at last, our file should look something like this:
 
@@ -298,11 +324,15 @@ module.exports = {
 }
 ```
 
+>Note: For even more modularity, the shuffleArray function should really be put into another file.
+
 Now that we have completed our application, let's wrap it up! (no pun intended).
 
 ## Section 6: Importing Your Application and Wrapping It in the Express App 
 
 In your app.js file or whatever you named your file that handles wrapping your applications, it is time to setup our first real end point.
+
+#### 1. Requiring Our Memes.js
 
 So far our app.js file should look something like this:
 
@@ -324,6 +354,8 @@ First, let's start off by requiring our newly created memes file with:
     const memes = require('./memes')
 ```
 
+#### 2. Create Another End Point
+
 Now, let's make an endpoint called /memes. Like before, we will need to use the express app.get() function, and then pass in our endpoint name. We can simply call our function in memes.js and assign it to a variable and just log it out to the console for now like so:
 
 ```javascript
@@ -333,13 +365,19 @@ Now, let's make an endpoint called /memes. Like before, we will need to use the 
     })
 ```
 
-Interestingly, this will log out:
+Interestingly, however, this will log out:
 
 ```javascript
     Promise { <pending> }
 ```
 
-And that's not the thing that we want, so we will need to modify the code by adding some sort of mechanism to handle the fact that calling memes.getMemes() is an asynchoronous function. I will use async await syntax to achieve this, but again you could use callbacks or promises if you prefer.
+And that's not the thing that we want, so we will need to modify the code the somehow.
+
+#### 3. Handle Asynchronous Function
+
+The issue is that the code is asynchronous. We must add some sort of mechanism to handle this fact.
+
+We will use async await syntax to achieve this, but again you could use callbacks or promises if you prefer.
 
 Refactoring the code, we get this:
 

@@ -8,12 +8,12 @@ nav_order: 6
 In this tutorial we will be going over how to use Express router property to break routes down into their own files. Again, the purpose of increasing modularity is to make our code easier to read, debug, work with, and test. It is essential that we modularize our code.
 
 Here, we break down this process into four short steps:
-<ul>
+<ol>
 <li>Create a Routes Folder</li>
 <li>Calling the Express Router Function in our Route Files</li>
 <li>Using router.get() Instead of app.get()</li>
 <li>Requiring Our Route Files and Using Them in app.js.</li>
-</ul>
+</ol>
 
 ## Section 1: Creating a Routes Folder
 

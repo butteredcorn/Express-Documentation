@@ -8,11 +8,11 @@ nav_order: 5
 [Embedded JavaScript](https://ejs.co/#install) (EJS) is a templating language that is used to embedd JavaScript into HTML. EJS files are saved in a .ejs extension format. EJS is popular because it looks familiar to web developers and provides an easy way to render data to the client side.
 
 In this short tutorial, we will go over the following:
-<ul>
+<ol>
 <li>Installing and Setting Up EJS</li>
 <li>Rendering Data to an EJS File</li>
 <li>Creating an EJS File and Handling Data</li>
-</ul>
+</ol>
 
 ## Section 1: Installing and Setting Up EJS
 
