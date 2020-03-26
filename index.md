@@ -3,7 +3,13 @@ layout: default
 title: Home
 ---
 
-# Welcome to a Guide on How to Setup Your First Express.js Web Server
+![servers](./images/servers.jpg)
+
+# Welcome to a Guide on How to Setup a Modular Express.js Web Server
+
+Here I will guide you on how to not only setup your first HTTP end point, but to do so in a fashion that is easy to read, easy to work with, easy to debug and easy to test.
+
+In an age of test driven development, modularity is no longer an option, but an essential part of writing code. Everything suggested here is for the sake of not only providing a contrieved working example of Express.js, but to provide a skeleton that can be used to really get you started with your Express application.
 
 If you are new to Express.js, we recommend that you read our guide in the order provided.
 
@@ -52,6 +58,14 @@ If you are new to Express.js, we recommend that you read our guide in the order 
 <li>Calling the Express Router Function in our Route Files</li>
 <li>Using router.get() Instead of app.get()</li>
 <li>Requiring Our Route Files and Using Them in app.js</li>
+</ol>
+
+### Part 6: Centralized Error Handling with Sentry.io
+<ol>
+<li>Installing Sentry For Express.js</li>
+<li>Requiring Sentry in our app.js File</li>
+<li>Instructing Express to Use Sentry</li>
+<li>Configuring Your End Point to Use Sentry</li>
 </ol>
 
 

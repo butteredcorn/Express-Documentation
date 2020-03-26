@@ -192,4 +192,4 @@ Perfect. You have now learned how to host from a file from a sub-folder within t
 
 ## Summary
 
-Congratulations! You have now learned the fundamentals for creating an Express server to host an end point and can even host files from a static folder. Next up will be to expand on the possibilities that Express has to offer by further exploring routing, hosting dynamic applications, and using middleware to expand on Express.js' functionalities.
+Congratulations! You have now learned the fundamentals for creating an Express server to host an end point and can even host files from a static folder. Next up will be to [create an asynchronous application](../express-app-example/create-app.md). If you already know how to do this, you can skip over to [rendering to the front-end with Embedded JavaScript](../express-app-example/ejs.md)

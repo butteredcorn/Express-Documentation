@@ -6,8 +6,6 @@ nav_order: 1
 # Introduction
 The purpose of this documentation is to assist someone new to coding with not only setting up your first Express server and application, but to do so in a fashion that is easy to read, easy to work with, easy to debug and easy to test.
 
-Welcome to my introductory guide for learning how to setup a modular Express.js web server!
-
 ## What is Express.js?
 
 [Express.js](https://expressjs.com/) is a fast, minimalist web framework for Node.js. It is used for hosting everything from web pages, to RESTful APIs, to dedicated JSON web token authentication servers. With over 43,000 GitHub stars, Express.js is the most popular Node framework. 
@@ -31,6 +29,7 @@ We utilize the following dependencies along with Node.js v10.16.3:
 <li>ejs: 3.0.1</li>
 <li>express: 4.17.1</li>
 <li>request: 2.88.2</li>
+<li>@sentry/node: 5.15.0</li>
 </ul>
 
 ## Prerequisites

@@ -417,6 +417,6 @@ module.exports = function (database) {
 }(null);
 ```
 
-#### Summary
+## Summary
 
-At this point, we have created a basic express server, created an application that is asynchronous, and handled that asynchronicity within our app.get() function inside our express app. So far, however, the only thing that is happening when someone accesses our app.get('/memes') is that we get some meme objects logged out to our console. Let's render this data to the front end, so we can finally see the fruits of our labours!
+At this point, we have created a basic express server, created an application that is asynchronous, and handled that asynchronicity within our app.get() function inside our express app. So far, however, the only thing that is happening when someone accesses our app.get('/memes') is that we get some meme objects logged out to our console. Let's [render this data to the front-end](./ejs.md), so we can finally see the fruits of our labours!

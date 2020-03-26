@@ -222,4 +222,4 @@ It could certainly use a bit of styling, but we'll leave that for another time. 
 
 ![congratulations cat](./images/wheat-cat.jpeg)
 
-Congratulations!!! You are now one step closer to becoming a web developer.
+Congratulations!!! You are now one step closer to becoming a web developer. The next step will be to learn how to [better modularize our server](../routes/routes.md).

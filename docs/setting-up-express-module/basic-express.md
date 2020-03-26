@@ -194,4 +194,6 @@ Let's try re-running our server and accessing our local host again. Your browser
 
 ![hello world](./images/hello-world.png)
 
+## Summary
+
 Congratulations! Now, we've setup a Express.js server and hosted our first end point. Now, we can really start to get into writing more code to make our web server more useful. Next up is to do a bit of code refactoring to make our server more useful by [refactoring it](./refactor.md).

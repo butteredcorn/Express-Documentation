@@ -3,7 +3,23 @@ module.exports = function (database) {
     const memes = require('./memes')
     const app = express()
     const aboutRouter = require('./routes/about')
+    const Sentry = require('@sentry/node');
+    Sentry.init({
+        dsn: 'https://04c45c80d96840b58988cb9771acd41d@sentry.io/2300829',
+    });
 
+    app.use(Sentry.Handlers.requestHandler());
+
+
+    app.get('/test-sentry', function (req, res) {   
+        // Sentry.configureScope(function(scope) {
+        // 	scope.setUser({ email: email });
+        // 	scope.setTag('test_error_tag', 'hello world!');
+        // 	scope.setLevel('warning');
+        // });
+        res.send("ERROR!")
+        throw new Error('My first Sentry error!');
+    });
 
     app.use(express.static('public')) 
     app.use(aboutRouter)
@@ -46,6 +62,8 @@ module.exports = function (database) {
         }
         
     })
+
+    app.use(Sentry.Handlers.errorHandler());
 
     return app; //if this wasn't wrapped in a function, this is where we would use module.exports = app
 }(null);

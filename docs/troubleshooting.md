@@ -7,7 +7,7 @@ nav_order: 8
 
 While following this guide, you may run into one of many common problems. We hope to provide at least some guidance for you, should you run into the following problems:
 
-#### app.listen() TypeError
+### app.listen() TypeError
 
 If you are getting the following Type Error when trying modularize the [app.listen()](https://expressjs.com/en/api.html#app.listen) function:
 
@@ -30,7 +30,7 @@ module.exports = function () {
 
 To understand why, simply take a closer look at what is happening in this code block. We have wrapped our app.js file in an anonymous function that is immediately invoked with the parentheses at the bottom. If no return statement existed, essentially the app.js file will run, but not return anything, and since nothing is returned, the 'nothing' is defaulted to ```undefined``` and thus you get this particular error.
 
-#### app.use() TypeError
+### app.use() TypeError
 
 If you are getting the following Type Error when trying to implement [router.get()](https://expressjs.com/en/guide/using-middleware.html#middleware.router):
 
@@ -48,7 +48,7 @@ This error message is more cryptic since Node.js is unable to trace the error to
 
 >Note: App.use() always expected some sort of application level argument such as telling it to use a middleware.
 
-#### res.sendFile() TypeError
+### res.sendFile() TypeError
 
 If you are getting the following Type Error when trying to use [res.sendFile()](https://expressjs.com/en/api.html#res.sendFile):
 
@@ -60,7 +60,7 @@ Ensure that you are [passing in an absolute path or a reference to the root dire
 
 >Note: .sendFile() was added to Express.js from v4.8.0 onwards. Earlier versions will not have any references to .sendFile().
 
-#### The Dreaded Promise { <pending> }
+### The Dreaded Promise { <pending> }
 
 If you even come across this after you try to log out the result of an end point calling a function and you get the following:
 
@@ -70,7 +70,7 @@ Promise { <pending> }
 
 It is because your console.log() statement is getting called before the promisifed function you are calling is getting resolved. Ensure that both the function you are calling is somehow handling its asyncronicity and that the end point itself is also handling asyncronicity. We suggest using async await for handling end points because end points should follow the principle of single responsibility. If the end point is too complex to use async await, it should be broken up into more modular code.
 
-#### Values From Variables Passed to an EJS File Fails to Render to Front End
+### Values From Variables Passed to an EJS File Fails to Render to Front End
 
 If you notice that the values for variables you are passing to your ejs files fail to show up when you try to access the HTML page in your browser, check to ensure that you are using the proper [EJS syntax](https://ejs.co/#docs), such as using the equal sign operator after the opening angle bracket and percentage sign like so:
 ```HMTL
