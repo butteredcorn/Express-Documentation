@@ -79,7 +79,7 @@ const app = express()
 
 The express object has so very many functions and properties that we will not be able to go over even one tenth of them in this tutorial. If you are curious, however, we encourage you to look at [express.js' official documentation](https://expressjs.com/en/api.html).
 
-For now, let's define a basic endpoint for our express application that simply returns the words *"Hello World"* to any client that accesses that endpoint.
+For now, let's define a basic endpoint for our express application that simply returns the words ```"Hello World"``` to any client that accesses that endpoint.
 
 #### 2. Creating Our First Express Endpoint
 
@@ -95,7 +95,7 @@ app.get('/', (req, res) => {
 
 >Note: It is convention to use 'req' as the abbreviation for request and 'res' as the abbreviation for response. You can change them to any two words, but the first word will always refer to request and the second will always refer to response.
 
-The body of the callback function will be called automatically every time a user accesses the index page endpoint. For now, we can simply test that the ```.get()``` property is working as intended by logging "hello world" to the console like this:
+The body of the callback function will be called automatically every time a user accesses the index page endpoint. For now, we can simply test that the ```.get()``` property is working as intended by logging ```"hello world"``` to the console like this:
 
 ```javascript
 app.get('/', (req, res) => {

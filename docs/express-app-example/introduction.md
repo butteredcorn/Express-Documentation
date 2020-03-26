@@ -68,6 +68,10 @@ some other code here
 
 ```
 
+Small pieces of code are also put into code blocks for ease of reference.
+
+For example, if we are referring to a specific string 'Hello World', it will be shown as ```'Hello World'```.
+
 ## Additional Notes and Warnings
 
 All notes are separated into their own indented blocks of text like so:
