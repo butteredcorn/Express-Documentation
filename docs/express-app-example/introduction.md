@@ -76,6 +76,6 @@ For example, if we are referring to a specific string 'Hello World', it will be 
 
 All notes are separated into their own indented blocks of text like so:
 
->```note: Our notes are noted like this.```
+>Note: Our notes are noted like this.
 
 
