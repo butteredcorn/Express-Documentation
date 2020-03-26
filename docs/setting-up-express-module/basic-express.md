@@ -32,7 +32,7 @@ $ npm init
 
 Running npm init prompts various questions regarding your project. For now, you can skip these questions by pressing enter.
 
-The npm init command, creates a file called package.json which at its core, is a configuration file for your project. We will not go over why you should be doing this in this tutorial. If you would like to look into this however, we encourage you to look into the official documdntation by [npmjs](https://docs.npmjs.com/creating-a-package-json-file).
+The npm init command, creates a file called package.json which at its core, is a configuration file for your project. We will not go over why you should be doing this in this tutorial. If you would like to look into this however, we encourage you to look into the official documentation by [npmjs](https://docs.npmjs.com/creating-a-package-json-file).
 
 #### 3. Installing Express.js
 
@@ -85,7 +85,7 @@ For now, let's define a basic endpoint for our express application that simply r
 
 We can create a  by calling the ```.get()``` property on our express object. If you take a look at your code editor, you will notice that it the ```.get()``` property takes two arguments, a string that corresponds to a url path and a callback function that itself takes two arguments for request and response.
 
-Let's pass in '/' which simply refers to the index page, and an anonymous function with two parameters:
+Let's pass in ```'/'``` which simply refers to the index page, and an anonymous function with two parameters:
 
 ```javascript
 app.get('/', (req, res) => {
@@ -167,7 +167,7 @@ app.get('/', (req, res) => {
 })
 ```
 
-If you are following along in your code editor, you can see that it is expecting something to be passed into a 'body'. This body refers to the response object's body, and is the code that will get rendered to the browser. For now, let's pass in "Hello World!" like so:
+If you are following along in your code editor, you can see that it is expecting something to be passed into a 'body'. This body refers to the response object's body, and is the code that will get rendered to the browser. For now, let's pass in ```"Hello World!"``` like so:
 
 ```javascript
 app.get('/', (req, res) => {

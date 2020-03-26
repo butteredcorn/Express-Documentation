@@ -95,7 +95,7 @@ app.get(('/memes'), async (req, res) => {
 
 #### 2: Pass in Data as Key Value Pairs 
 
-If you take a look at your code editor, you will notice that ```.render()``` will take two arguments, the first is for a 'view' which should be a string, and the second, an object. The somewhat mysterious 'view' argument is simply the name of the .ejs file in your views folder. We don't have one yet, but let's pass in 'memes' for now like so:
+If you take a look at your code editor, you will notice that ```.render()``` will take two arguments, the first is for a 'view' which should be a string, and the second, an object. The somewhat mysterious 'view' argument is simply the name of the .ejs file in your views folder. We don't have one yet, but let's pass in ```'memes'``` for now like so:
 
 ```javascript
 app.js
@@ -186,7 +186,7 @@ So far, there is nothing special about this file, even though it uses an .ejs ex
 
 #### 2: Using JavaScript and the Keys from res.render()
 
-We created two variables and passed them to the .render() method via an anonymous object in our app.js file. Now, we want to pull them out and use them in our .ejs file. We can do that very simply by using EJS's signature angle bracket and percentage sign notation like so:
+We created two variables and passed them to the ```.render()``` method via an anonymous object in our app.js file. Now, we want to pull them out and use them in our .ejs file. We can do that very simply by using EJS's signature angle bracket and percentage sign notation like so:
 
 ```html
 <!DOCTYPE html>

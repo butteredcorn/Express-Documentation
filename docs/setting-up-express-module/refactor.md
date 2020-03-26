@@ -166,7 +166,7 @@ module.exports = () {
 
 I mentioned that index.html has a special property whereby users trying to access the endpoint where nothing exists after the root url and/or with a slash after it will receive index.html. However, notice how our ```app.get('/')``` is already an endpoint that is listening for a slash.
 
-In this case, the end user types in the url (which in this case is localhost:3000), express determines that the endpoint with just a slash matches the url requested, and serves the ```app.get('/')``` endpoint and thus serving ```'Hello World!'``` **without ever getting to the next line** where it sends 'Goodbye World!'.
+In this case, the end user types in the url (which in this case is localhost:3000), express determines that the endpoint with just a slash matches the url requested, and serves the ```app.get('/')``` endpoint and thus serving ```'Hello World!'``` **without ever getting to the next line** where it sends ```'Goodbye World!'```.
 
 This is a prime example about why we need to be careful with our code, and in this case, careful about how we are routing our apps.
 

@@ -57,7 +57,7 @@ Sentry.init({
 
 #### Part 2: Calling app.use() to Inform Express
 
-Next, we want to call app.use() so that Express.js is aware of the Sentry object. We will need to pass in a specific property of the Sentry object called ```.Handlers.requestHandler()``` like so:
+Next, we want to call ```app.use()``` so that Express.js is aware of the Sentry object. We will need to pass in a specific property of the Sentry object called ```.Handlers.requestHandler()``` like so:
 
 ```javascript
 app.use(Sentry.Handlers.requestHandler());

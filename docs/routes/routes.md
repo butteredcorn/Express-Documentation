@@ -25,7 +25,7 @@ For this example, lets one file in our routes folder called **about.js** like so
 
 We will get this about.js file to handle the end points to all the urls belonging to the /about route.
 
-In this case, this about.js file will direct all requests for urls including '/about/' to an about.html page in the 'public' folder which is a sub-folder directly under the root directory like this:
+In this case, this about.js file will direct all requests for urls including ```'/about/'``` to an about.html page in the 'public' folder which is a sub-folder directly under the root directory like this:
 
 ![public folder](./images/public-folder.png)
 
@@ -68,7 +68,7 @@ const express = require('express')
 
 ## Section 2: Calling the Express Router Function in our Route Files
 
-Let's start in our about.js file. Like any express app, the first line of code would be to require express. After that, we will need to get access to the express.router function. Like the express application object, we can get access to the router by simply binding it to a global variable. Let's do that now by binding it to a variable called router like so:
+Let's start in our about.js file. Like any express app, the first line of code would be to require express. After that, we will need to get access to the ```express.router()``` function. Like the express application object, we can get access to the router by simply binding it to a global variable. Let's do that now by binding it to a variable called router like so:
 
 ```javascript
 about.js
@@ -79,7 +79,7 @@ const router = express.Router();
 
 ```
 
->Note: the name of the global variable to bind express.Router() is **router** by convention.
+>Note: the name of the global variable to bind ```express.Router()``` is **router** by convention.
 
 At this time, let's also require the Node.js built-in '[path](https://nodejs.org/api/path.html)' module. If you aren't already familiar, this module will let us reference the relative and absolute paths of our files and directories more easily. Again, all we need to do is bind it to a variable like so:
 
@@ -94,9 +94,9 @@ const path = require('path')
 
 ## Section 3: Using router.get() Instead of app.get()
 
-Essentially you can think of router.get() as an app.get() with the additional functionality to fork out end points. We refer to a fork of end points as a route. If that doesn't make sense right now, that's okay, as it will make more sense after we create a route.
+Essentially you can think of ```router.get()``` as an ```app.get()``` with the additional functionality to fork out end points. We refer to a fork of end points as a route. If that doesn't make sense right now, that's okay, as it will make more sense after we create a route.
 
-To use router.get(), all we need to do is call it just like app.get() like so:
+To use ```router.get()```, all we need to do is call it just like ```app.get()``` like so:
 
 ```javascript
 router.get('', (req, res) => {
@@ -104,7 +104,7 @@ router.get('', (req, res) => {
 });
 ```
 
-Again, we can see that router.get() takes two arguments, the first of which is a string that refers to a path, and the second a callback function that takes a request, a response, and optionally, a 'next' argument. We will leave that one out for now.
+Again, we can see that ```router.get()``` takes two arguments, the first of which is a string that refers to a path, and the second a callback function that takes a request, a response, and optionally, a ```next``` argument. We will leave that one out for now.
 
 Let's pass in ```'/about'``` for the path, and then in the body of the anonymous function, call ```res.sendFile()``` and pass in our about.html page like so:
 
@@ -116,7 +116,7 @@ router.get('/about', (req, res) => {
 
 As you can imagine, this property will send a whole file to the end user.
 
->Note: res.sendFile() requires an absolute path or a reference to the root directory. This is we use the built-in path module as shown.
+>Note: ```res.sendFile()``` requires an absolute path or a reference to the root directory. This is we use the built-in path module as shown.
 
 At this point, our about.js file should look like this:
 
@@ -134,7 +134,7 @@ router.get('/about', (req, res) => {
 });
 ```
 
-To make this file available to our main app.js file, we will need to export the Express router. We accomplish this by simply using module.exports and exporting the router directly like so:
+To make this file available to our main app.js file, we will need to export the Express router. We accomplish this by simply using ```module.exports``` and exporting the router directly like so:
 
 ```javascript
 about.js
@@ -177,7 +177,7 @@ module.exports = () {
 
 >Note: By convention we name the variables that require the routes by the route name and then router. In this case, we are requiring the about router, and name it accordingly.
 
-Now that the route is required, all we need to do is to tell Express to use the route. Similar to the express.static function, we just call ```app.use()``` and pass in ```aboutRouter``` like so:
+Now that the route is required, all we need to do is to tell Express to use the route. Similar to the ```express.static``` function, we just call ```app.use()``` and pass in ```aboutRouter``` like so:
 
 ```javascript
 app.js

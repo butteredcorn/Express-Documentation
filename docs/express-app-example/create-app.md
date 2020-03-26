@@ -356,7 +356,7 @@ First, let's start off by requiring our newly created memes file with:
 
 #### 2. Create Another End Point
 
-Now, let's make an endpoint called /memes. Like before, we will need to use the express app.get() function, and then pass in our endpoint name. We can simply call our function in memes.js and assign it to a variable and just log it out to the console for now like so:
+Now, let's make an endpoint called ```/memes```. Like before, we will need to use the express ```app.get()``` function, and then pass in our endpoint name. We can simply call our function in memes.js and assign it to a variable and just log it out to the console for now like so:
 
 ```javascript
     app.get(('/memes'), (req, res) => {
