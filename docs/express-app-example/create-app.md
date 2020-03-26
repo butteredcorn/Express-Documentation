@@ -126,7 +126,7 @@ We know that the object has a property called data that itself is an object with
 ```javascript
     let memes = (JSON.parse(body)).data.memes
 ```
-Note that we need to parse the body out of the JSON object, and we can do that just by using JSON.parse().
+Note that we need to parse the body out of the JSON object, and we can do that just by using ```JSON.parse()```.
 
 #### 2. Structure the Data in an Array
 
@@ -420,7 +420,7 @@ Much better, however, we are still missing one last thing...
 
 ## Section 7: Error Handling - The Optional but Not Really Part
 
-So our memes endpoint works, but no code is complete without error handling. We can add some error handling by simply wrapping our function call to memes.getMemes() in a try-catch block like so:
+So our memes endpoint works, but no code is complete without error handling. We can add some error handling by simply wrapping our function call to ```memes.getMemes()``` in a try-catch block like so:
 
 ```javascript
 app.get(('/memes'), async (request, response) => {

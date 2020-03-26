@@ -33,6 +33,15 @@ We utilize the following dependencies along with Node.js v10.16.3:
 <li>@sentry/node: 5.15.0</li>
 </ul>
 
+Other Software:
+<ul>
+<li>Visual Studio Code version 1.43.2</li>
+<li>Command Shell: Bash version 3.2.57(1)</li>
+<li>OS: MacOS Mojave</li>
+</ul>
+
+You may use any other suitable code editor, command shell, or operating system, however, the terminal commands may have to be adapted for your setup.
+
 ## Prerequisites
 To follow along with these instructions, you will need the following:
 <ul>
@@ -47,13 +56,13 @@ While we believe you can follow this guide without having prior knowledge workin
 In all of our syntactically highlighted code blocks, we will denote the filename the code block belongs to by stating the filename along with a line of dashes underneath it like so:
 
 ```javascript
-file1
------
+file1.js
+--------
 
 some code here
 
-file2
------
+file2.js
+--------
 
 some other code here
 
