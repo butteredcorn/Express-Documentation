@@ -14,7 +14,7 @@ Centralized error handling is a very important concept in development. When your
 
 You will need to sign up with sentry.io first, before proceeding with the following tutorial, and you can do that [here](https://sentry.io/signup/).
 
-## Installing Sentry For Express.js
+## Section 1: Installing Sentry For Express.js
 
 As you can guess by now, move to your root directory and npm install Sentry for Node.js with the following command:
 
@@ -22,7 +22,7 @@ As you can guess by now, move to your root directory and npm install Sentry for 
 npm install @sentry/node
 ```
 
-## Requiring Sentry in our app.js File
+## Section 2: Requiring Sentry in our app.js File
 
 Once we have sentry installed in our project, we can require the module into our app.js file. We should do this at the top of the file like so:
 
@@ -41,7 +41,7 @@ module.exports = () {
 }()
 ```
 
-## Instructing Express to Use Sentry
+## Section 3: Instructing Express to Use Sentry
 
 To tell Express.js to use Sentry for our error handling, we need to do two things: we must initialize sentry with ```Sentry.init()``` and we must call the ```.use()``` function on our Express application.
 
@@ -117,7 +117,7 @@ module.exports = () {
 
 And now, we have Sentry configured and ready to be used.
 
-## Configuring Your End Point to Use Sentry
+## Section 4: Configuring Your End Point to Use Sentry
 
 Let's create a new ```app.get()``` end point called 'test-sentry'. To test that our setup is working, all we need to do is to throw an error like so:
 

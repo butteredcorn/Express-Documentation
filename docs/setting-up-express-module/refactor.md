@@ -7,14 +7,16 @@ nav_order: 3
 
 There are a few things that can be done to make the code more modular and easier to work with. Even if you are working alone, creating modular code will make your work easier to read and debug.
 
-In this section, we will go over the following:
+In this tutorial, we will go over the following:
 <ul>
 <li>Removing Magic Numbers</li>
 <li>Moving the Hosting Functionality to Another File</li>
 <li>Moving Express Apps into Sub-Folders.</li>
 </ul>
 
-## Removing Magic Numbers From Your Code
+And then finally, we will cover off the importance of routing. 
+
+## Section 1: Removing Magic Numbers From Your Code
 
 Our code so far is only eight lines, but even then, we have introduced a magic number. Our port number is bound directly to the number 3000 and our error message also references this number directly. Let's change that by binding the port number to a global variable for now, and then simply referencing that variable like so:
 
@@ -36,7 +38,7 @@ There we go, much better. If your code depends on a constant, it should refer to
 
 We could even go one step further by importing constants in a file that contains all constants, but we will leave it like this for this tutorial.
 
-## Moving the Hosting Functionality to Another File
+## Section 2: Moving the Hosting Functionality to Another File
 
 Another thing we can do to increase modularity is to wrap the app.js file in a function, export it and have the hosting function completed in another file. This has several benefits such as making your code easier to test and debug. It also follows the concept of increasing [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection), which isn't something we will go over in this tutorial, but is something to read if you are so curious.
 
@@ -76,7 +78,7 @@ Again, this may seem very unnecessary at this point in your code, but simply ima
 
 Finally, let's move into our last topic, and the one that will take a bit more work to accompmlish - moving files into sub-folders.
 
-## Moving Express Apps into Sub-Folders
+## Section 3: Moving Express Apps into Sub-Folders
 
 Now that we have covered the essentials for hosting and endpoint and sending a simple response to our users, we will be covering how to host some static content like an HTML file in a sub-folder within our root directly.
 
@@ -140,7 +142,7 @@ What a minute! Nothing has changed?!
 
 It is now time to discuss the importance of routing.
 
-## Hosting Your Apps and the Importance of Routing 
+## Section 4: Hosting Your Apps and the Importance of Routing 
 
 When we host our express apps, we need to be cognizant about the order of which we are hosting end points and where we are putting our files (ie. like in which sub-folders). This is because express will host the first endpoint that meets their criteria.
 

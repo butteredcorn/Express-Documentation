@@ -5,15 +5,22 @@ nav_order: 4
 
 # Creating a Simple Application
 
-Now that we have an express server skeleton setup, let's create a simple application to demonstrate how the express server will work.
-
-For this example, we will create a javascript file that will simply call an API that will return an JSON object filled with an array of meme objects.
-
-We will use the following API endpoint from api.imgflip.com:
+Now that we have an express server skeleton setup, let's create a simple application to demonstrate how the express server will work. For this example, we will create a javascript file that will simply call an API that will return an JSON object filled with an array of meme objects. We will use the following API endpoint from api.imgflip.com:
 
     https://api.imgflip.com/get_memes
 
-## Step 1 - Setting up Dependencies
+Due to the nature of this particular task, we will be discussing more concepts than in our other tutorials. we break down this tutorial into the following seven sections:
+<ol>
+<li>Setting up Dependencies</li>
+<li>Creating a new getMemes() function</li>
+<li>Using the Request Library to request for the JSON data from imgflip</li>
+<li>Parsing Out the Data and Preparing it to be Sent Out</li>
+<li>Checking Our Work</li>
+<li>Importing Your Application and Wrapping It in the Express App </li>
+<li>Error Handling - The Optional but Not Really Part</li>
+</ol>
+
+## Section 1 - Setting up Dependencies
 
 For this demo applicatiaon we will be using the request library.
 
@@ -26,7 +33,7 @@ const request = require('request')
 
 ```
 
-## Step 2 - Creating a new getMemes() function
+## Section 2 - Creating a new getMemes() function
 
 ```javascript
 function getMemes(){
@@ -49,7 +56,7 @@ function getMemes(){
 }
 ```
 
-## Step 3 - Using the Request Library to request for the JSON data from imgflip
+## Section 3 - Using the Request Library to request for the JSON data from imgflip
 
 The request library has the following function for requesting the JSON data from an API:
 
@@ -100,7 +107,7 @@ Why don't we refactor it a bit so that it is easier to read like so:
 
 Essentially this API is returning an object with several properties, notably a data property that is housing our meme objects that are stored in an array. The reason why the 'body' is so long, because it stores so many meme objects.
 
-## Step 4 - Parsing Out the Data and Preparing it to be Sent Out
+## Section 4 - Parsing Out the Data and Preparing it to be Sent Out
 
 Now that we can see what we are getting when we call the request function, let's prepare it for our server.
 
@@ -210,7 +217,7 @@ module.exports = {
 }
 ```
 
-## Step 5: Checking Our Work
+## Section 5: Checking Our Work
 
 If you log the result out to the console now, you should see the same array filled with meme objects, except that we've limited the number of memes to ten.
 
@@ -293,7 +300,7 @@ module.exports = {
 
 Now that we have completed our application, let's wrap it up! (no pun intended).
 
-## Step 6: Importing Your Application and Wrapping It in the Express App 
+## Section 6: Importing Your Application and Wrapping It in the Express App 
 
 In your app.js file or whatever you named your file that handles wrapping your applications, it is time to setup our first real end point.
 
@@ -373,7 +380,7 @@ Now, let's see what we get...
 
 Much better, however, we are still missing one last thing...
 
-## Step 7: Error Handling - The Optional but Not Really Part
+## Section 7: Error Handling - The Optional but Not Really Part
 
 So our memes endpoint works, but no code is complete without error handling. We can add some error handling by simply wrapping our function call to memes.getMemes() in a try-catch block like so:
 

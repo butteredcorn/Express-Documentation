@@ -14,11 +14,11 @@ In this short tutorial, we will go over the following:
 <li>Creating an EJS File and Handling Data</li>
 </ul>
 
-## Installing and Setting Up EJS
+## Section 1: Installing and Setting Up EJS
 
 The first thing to do before we get started of course, is to install and setup EJS, so let's do that.
 
-#### Step 1: NPM Install EJS
+#### 1: NPM Install EJS
 
 As you can imagine by now, all we need to do to install Embedded JavaScript is to install it via the terminal like so:
 
@@ -26,7 +26,7 @@ As you can imagine by now, all we need to do to install Embedded JavaScript is t
 $ npm install ejs
 ```
 
-#### Step 2: Instruct Express.js to Use EJS as a View Engine
+#### 2: Instruct Express.js to Use EJS as a View Engine
 
 To serve EJS content through Express, we need to tell Express to use EJS. To do this, we actually need to tell Express to use EJS at the application level. We do this with the express application property ```.set()``` like so:
 
@@ -57,7 +57,7 @@ module.exports = () {
 
 Finally, we can move onto the last step, which is to setup a folder to put our EJS files in.
 
-#### Step 3: Creating a Views Folder In Your Root Directory
+#### 3: Creating a Views Folder In Your Root Directory
 
 We will need to create a folder called 'Views' inside our root directory and it will need to be called Views. This is a special folder that is used for the purpose of putting in templating language files. By default, the path is directly within the root directory, so let's do that like so:
 
@@ -68,11 +68,11 @@ This views folder is where we will be putting in all of our .ejs files.
 Now, we are ready to move on to rendering data.
 
 
-## Rendering Data to the EJS File
+## Section 2: Rendering Data to the EJS File
 
 To recap, so far we have created a memes.js file that gets an array of meme objects, and we can get that array of meme objects through a ```.get('/memes')``` end point. Now, we are finally ready to take those meme objects and render them to HTML so that we can serve to our end users.
 
-#### Step 1: Calling response.render() to Render a View
+#### 1: Calling response.render() to Render a View
 
 The Express response object has a method called ```.render()``` that is used to render a view. For this tutorial, all you need to know is that an .ejs file is a kind of view file (there are many others).
 
@@ -93,7 +93,7 @@ app.get(('/memes'), async (req, res) => {
     
 ```
 
-#### Step 2: Pass in Data as Key Value Pairs 
+#### 2: Pass in Data as Key Value Pairs 
 
 If you take a look at your code editor, you will notice that ```.render()``` will take two arguments, the first is for a 'view' which should be a string, and the second, an object. The somewhat mysterious 'view' argument is simply the name of the .ejs file in your views folder. We don't have one yet, but let's pass in 'memes' for now like so:
 
@@ -160,11 +160,11 @@ module.exports = () {
 
 That looks pretty good for now, let's move on to creating our EJS view file.
 
-## Creating an EJS File and Handling Data
+## Section 3: Creating an EJS File and Handling Data
 
 So we've told Express that ```.render()``` should be expecting a 'memes' view file, but we haven't created one yet, so let's do that now. 
 
-#### Step 1: Create an EJS Views File
+#### 1: Create an EJS Views File
 
 Simply create a file called memes.ejs inside your views folder that you just created in your root directory. This file doesn't have to contain anything other than HTML5's boiler plate code like so:
 
@@ -184,7 +184,7 @@ Simply create a file called memes.ejs inside your views folder that you just cre
 
 So far, there is nothing special about this file, even though it uses an .ejs extension, this is for all intents and purposes the same as a .html file.
 
-#### Step 2: Using JavaScript and the Keys from res.render()
+#### 2: Using JavaScript and the Keys from res.render()
 
 We created two variables and passed them to the .render() method via an anonymous object in our app.js file. Now, we want to pull them out and use them in our .ejs file. We can do that very simply by using EJS's signature angle bracket and percentage sign notation like so:
 

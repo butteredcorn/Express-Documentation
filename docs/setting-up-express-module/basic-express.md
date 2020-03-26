@@ -5,9 +5,9 @@ nav_order: 2
 
 # Creating Your First Express Server
 
-These instructions will go over how to setup a the most basic web server using Express.js and then introduce additional components to make your server more useful and scalable.
+This tutorial will go over how to setup a the most basic web server using Express.js. We will go over setting up your root directory and hosting your first end point with Express.js.
 
-## Setting Up Your Server's Root Directory
+## Section 1: Setting Up Your Server's Root Directory
 
 Express.js is a framework for Node.js. If you do not have Node.js installed, please download it here at [nodejs.org](https://nodejs.org/en/download/).
 
@@ -46,7 +46,7 @@ $ npm install express
 
 Finally, at this point, we are ready to create our first web server using Express.js.
 
-## Hosting Our First Web Server with Express.js
+## Section 2: Hosting Our First Web Server with Express.js
 
 Now that we have everything ready, we can create our first web server with just a few lines of code.
 

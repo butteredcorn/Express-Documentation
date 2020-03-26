@@ -26,6 +26,7 @@ Topics this guide will cover includes:
 
 We utilize the following dependencies along with Node.js v10.16.3:
 <ul>
+<li>node.js: 10.16.3</li>
 <li>ejs: 3.0.1</li>
 <li>express: 4.17.1</li>
 <li>request: 2.88.2</li>

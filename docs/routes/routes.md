@@ -15,7 +15,7 @@ Here, we break down this process into four short steps:
 <li>Requiring Our Route Files and Using Them in app.js.</li>
 </ul>
 
-## Creating a Routes Folder
+## Section 1: Creating a Routes Folder
 
 Let's create a new folder to house all of our routes. We will do this directly within our project's root directory, and for now, let's just call it **routes**. This folder will hold the various files that will handle all the different routes and endpoints for our application. By having all of our routes in one place, but not in one file, we can keep our Express server organized.
 
@@ -66,7 +66,7 @@ about.js
 const express = require('express')
 ```
 
-## Calling the Express Router Function in our Route Files
+## Section 2: Calling the Express Router Function in our Route Files
 
 Let's start in our about.js file. Like any express app, the first line of code would be to require express. After that, we will need to get access to the express.router function. Like the express application object, we can get access to the router by simply binding it to a global variable. Let's do that now by binding it to a variable called router like so:
 
@@ -92,7 +92,7 @@ const router = express.Router();
 const path = require('path')
 ```
 
-## Using router.get() Instead of app.get()
+## Section 3: Using router.get() Instead of app.get()
 
 Essentially you can think of router.get() as an app.get() with the additional functionality to fork out end points. We refer to a fork of end points as a route. If that doesn't make sense right now, that's okay, as it will make more sense after we create a route.
 
@@ -154,7 +154,7 @@ module.exports = router
 
 Now, we are ready to move back to our app.js file and require this about.js file.
 
-## Requiring Our Route Files and Using Them in app.js
+## Section 4: Requiring Our Route Files and Using Them in app.js
 
 In order to use our route files, we need to require them in our app.js. We do that by simply requiring them like normal as follows:
 
