@@ -18,7 +18,9 @@ And then finally, we will cover off the importance of routing.
 
 ## Section 1: Removing Magic Numbers From Your Code
 
-Our code so far is only eight lines, but even then, we have introduced a magic number. Our port number is bound directly to the number 3000 and our error message also references this number directly. Let's change that by binding the port number to a global variable for now, and then simply referencing that variable like so:
+Our code so far is only eight lines, but even then, we have introduced a magic number.
+
+Our port number is bound directly to the number 3000 and our error message also references this number directly. Let's change that by binding the port number to a global variable for now, and then simply referencing that variable like so:
 
 ```javascript
 const express = require('express')
@@ -86,14 +88,14 @@ Now that we have covered the essentials for hosting and endpoint and sending a s
 
 For this particular example, we will only be serving static content, so requiring a file is made a bit easier by the Express framework. However, the fact is, is that we still need to require the file from wherever we put it.
 
-First off, let's create a folder named **public** directly within our root directory. In order to require a file, we will need to use another Express app property called app.use(). Then we can chain it with another Express property called express.static() to require our 'public' folder like so:
+First off, let's create a folder named **public** directly within our root directory. In order to require a file, we will need to use another Express app property called ```app.use()```. Then we can chain it with another Express property called ```express.static()``` to require our 'public' folder like so:
 
 ```javascript
 app.use(express.static('public'))
 ```
 >Note: By convention, people use the name **public** to host their static content like HTML and CSS files. 
 
-It is important to understand that these two properties are their own parts and that app.use() specifically, can be used independent of express.static(). This is because, express.static is a special property used to host static content. If we were to switch it up and try to host dynamic content, we will also need to use app.use(), but then combine it with another way to require the dynamic file.
+It is important to understand that these two properties are their own parts and that ```app.use()``` specifically, can be used independent of ```express.static()```. This is because, ```express.static``` is a special property used to host static content. If we were to switch it up and try to host dynamic content, we will also need to use ```app.use()```, but then combine it with another way to require the dynamic file.
 
 At this point, our code within app.js should look like this:
 ```javascript
@@ -115,7 +117,7 @@ module.exports = () {
 
 #### 2. Creating Some Static Content
 
-Now that we have our app.js setup to host from our public folder, for this tutorial, let's create a basic HTML5 compliant page called index.html with the words 'Goodbye World!' in it like so:
+Now that we have our app.js setup to host from our public folder, for this tutorial, let's create a basic HTML5 compliant page called index.html with the words ```'Goodbye World!'``` in it like so:
 
 ```HTML
 index.html
@@ -134,7 +136,7 @@ index.html
 </html>
 ```
 
-Keep in mind that naming a file index.html has a special property whereby typing the name of the url with nothing after it or just a slash refers to index.html. So we should be expecting to see Goodbye World! when we type localhost:3000 into our browser. Let's see what we get when we try this...
+Keep in mind that naming a file index.html has a special property whereby typing the name of the url with nothing after it or just a slash refers to index.html. So we should be expecting to see ```Goodbye World!``` when we type localhost:3000 into our browser. Let's see what we get when we try this...
 
 ![hello world](./images/hello-world.png)
 
@@ -162,14 +164,14 @@ module.exports = () {
 }()
 ```
 
-I mentioned that index.html has a special property whereby users trying to access the endpoint where nothing exists after the root url and/or with a slash after it will receive index.html. However, notice how our app.get('/') is already an endpoint that is listening for a slash.
+I mentioned that index.html has a special property whereby users trying to access the endpoint where nothing exists after the root url and/or with a slash after it will receive index.html. However, notice how our ```app.get('/')``` is already an endpoint that is listening for a slash.
 
-In this case, the end user types in the url (which in this case is localhost:3000), express determines that the endpoint with just a slash matches the url requested, and serves the app.get('/') endpoint and thus serving 'Hello World!' **without ever getting to the next line** where it sends 'Goodbye World!'.
+In this case, the end user types in the url (which in this case is localhost:3000), express determines that the endpoint with just a slash matches the url requested, and serves the ```app.get('/')``` endpoint and thus serving ```'Hello World!'``` **without ever getting to the next line** where it sends 'Goodbye World!'.
 
 This is a prime example about why we need to be careful with our code, and in this case, careful about how we are routing our apps.
 
 In order to see Goodbye World! we can do one of two things:
-We can access localhost:3000/index.html directly, or we can comment out the app.get('/') endpoint and access localhost:3000 again. Let's do the latter right now like so:
+We can access localhost:3000/index.html directly, or we can comment out the ```app.get('/')``` endpoint and access localhost:3000 again. Let's do the latter right now like so:
 
 ```javascript
 app.js

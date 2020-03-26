@@ -11,9 +11,9 @@ Here I will guide you on how to not only setup your first HTTP end point, but to
 
 In an age of test driven development, modularity is no longer an option, but an essential part of writing code. Everything suggested here is for the sake of not only providing a contrieved working example of Express.js, but to provide a skeleton that can be used to really get you started with your Express application.
 
-If you are new to Express.js, we recommend that you read our guide in the order provided.
+If you are new to Express.js, we recommend that you read our guide in the order provided on the left side navigation menu.
 
-## Table of Contents
+We will be covering the following six topics. The sub-sections in each topic are also listed below as follows:
 
 ### Introduction
 <ol>

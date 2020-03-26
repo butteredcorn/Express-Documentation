@@ -62,7 +62,7 @@ After your file is created, let's require/import the express library that we jus
 const express = require('express')
 ```
 
-After we have required the express library, we can get access to all of its functions by creating an express() object by calling it and binding it to a variable like so:
+After we have required the express library, we can get access to all of its functions by creating an ```express()``` object by calling it and binding it to a variable like so:
 
 ```javascript
 const app = express()
@@ -83,7 +83,7 @@ For now, let's define a basic endpoint for our express application that simply r
 
 #### 2. Creating Our First Express Endpoint
 
-We can create a  by calling the .get() property on our express object. If you take a look at your code editor, you will notice that it the .get() property takes two arguments, a string that corresponds to a url path and a callback function that itself takes two arguments for request and response.
+We can create a  by calling the ```.get()``` property on our express object. If you take a look at your code editor, you will notice that it the ```.get()``` property takes two arguments, a string that corresponds to a url path and a callback function that itself takes two arguments for request and response.
 
 Let's pass in '/' which simply refers to the index page, and an anonymous function with two parameters:
 
@@ -95,7 +95,7 @@ app.get('/', (req, res) => {
 
 >Note: It is convention to use 'req' as the abbreviation for request and 'res' as the abbreviation for response. You can change them to any two words, but the first word will always refer to request and the second will always refer to response.
 
-The body of the callback function will be called automatically every time a user accesses the index page endpoint. For now, we can simply test that the .get() property is working as intended by logging "hello world" to the console like this:
+The body of the callback function will be called automatically every time a user accesses the index page endpoint. For now, we can simply test that the ```.get()``` property is working as intended by logging "hello world" to the console like this:
 
 ```javascript
 app.get('/', (req, res) => {
@@ -113,11 +113,11 @@ app.get('/', (req, res) => {
 })
 ```
 
-Now, if you try to run this code, it won't work just yet. This is because we still need to call one more express object property called .listen() to actually host the index page endpoint.
+Now, if you try to run this code, it won't work just yet. This is because we still need to call one more express object property called ```.listen()``` to actually host the index page endpoint.
 
 #### 3. Hosting Our First Endpoint
 
-If you call the .listen() property, you will notice that it also takes one argument for a port number, and an optional callback function that is called after the application is hosted. For now, let's pass in the integer 3000 for the port number and an anonymous callback function that simply logs out a message like so:
+If you call the ```.listen()``` property, you will notice that it also takes one argument for a port number, and an optional callback function that is called after the application is hosted. For now, let's pass in the integer 3000 for the port number and an anonymous callback function that simply logs out a message like so:
 
 ```javascript
 app.listen(3000, () => {
@@ -159,7 +159,7 @@ app.listen(3000, () => {
 })
 ```
 
-Now let's replace the console.log with a response to the user. We can do this by calling the .send() property on the response argument.
+Now let's replace the console.log with a response to the user. We can do this by calling the ```.send()``` property on the response argument.
 
 ```javascript
 app.get('/', (req, res) => {
